@@ -11,6 +11,10 @@ int main(int argc, const char *argv[])
   }
   
   // Sanitize argument array
-  if 
+  if ( LEN(argv) != argc )
+  {
+    return 1; // Out of bounds error
+  }
+  
   return 0;
 }
