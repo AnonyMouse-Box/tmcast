@@ -13,4 +13,3 @@
 #include "flags.h"
 
 // Function prototypes
-bool build_table()
