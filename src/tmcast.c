@@ -19,7 +19,14 @@ int main(int argc, const char *argv[])
         printf("Out of bounds error.\n");
         return 100;
     }
-
+    
+    // Check for arguments
+    if (argc < 2)
+    {
+        printf("No arguments.");
+        return 200;
+    }
+    
     // Iterate over arguments
     for (i = 1; i < argc; i++)
     {
@@ -39,7 +46,17 @@ int main(int argc, const char *argv[])
                 // Catch long form flags
                 if (j == 1 && argv[i][j] == '-')
                 {
-                    // Set long form boolean
+                    // Detect long form flags
+                    switch (argv[i])
+                    {
+                        case "--version":
+                            // Set boolean of preset struct to true
+                            break;
+                        
+                        default:
+                            printf("Invalid flag %s.\n", argv[i]);
+                            return 201;
+                    }
                     break;
                 }
                 else
@@ -47,14 +64,14 @@ int main(int argc, const char *argv[])
                     // Detect short form flags
                     switch (argv[i][j])
                     {
-                        case v:
+                        case 'v':
                             // Set boolean of preset struct to true
                             break;
 
                         // Catch invalid flags
                         default:
-                            printf("Invalid flags.\n");
-                            return 200;
+                            printf("Invalid flag -%c.\n", argv[i][j]);
+                            return 201;
                     }
                 }
             }
