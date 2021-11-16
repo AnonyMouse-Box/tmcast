@@ -3,6 +3,7 @@ ___________________
 ----------
 2021/11/16
 ----------
+- Split flags table interaction into separate file
 - Implemented checking for memory allocation errors
 - Created a function for building flag table
 - Built struct for flag hash table
