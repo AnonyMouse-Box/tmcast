@@ -3,6 +3,9 @@ ___________________
 ----------
 2021/11/15
 ----------
+- Added descriptive errors and unique error codes
+- Set up case staments for entering flags
+- Split into long and short form flags
 - Added simple flag parser if statement
 - Added loop for argument parsing
 - Added basic length sanitation for argv
