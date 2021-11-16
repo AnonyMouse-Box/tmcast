@@ -8,7 +8,7 @@ int main(int argc, const char *argv[])
     if (argc < 1 || argc > MAX)
     {
         printf("Too many arguments.\n");
-        return 101; // Out of bounds error
+        return 101;
     }
 
     // Sanitize argument array
@@ -37,7 +37,7 @@ int main(int argc, const char *argv[])
             for (j=1; j < LEN(arg[j]); j++)
             {
                 // Catch long form flags
-                if (j == 2 && argv[i][j] == '-')
+                if (j == 1 && argv[i][j] == '-')
                 {
                     // Set long form boolean
                     break;
