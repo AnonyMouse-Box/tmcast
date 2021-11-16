@@ -9,5 +9,8 @@
 #include <stdbool.h>
 #include <limits.h>
 
+// Local files
+#include "flags.h"
+
 // Function prototypes
 bool build_table()
