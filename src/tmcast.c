@@ -1,6 +1,14 @@
 // Include header file
 #include "tmcast.h"
 
+// Define flag tuple hash table node
+typedef struct flagTupleNode
+{
+    char name[50];
+    bool value;
+    struct flagTupleNode *next;
+} flagTupleNode;
+
 // Main function
 int main(int argc, const char *argv[])
 {
@@ -8,7 +16,7 @@ int main(int argc, const char *argv[])
     if (argc < 1 || argc > MAX)
     {
         printf("Too many arguments.\n");
-        return 101; // Out of bounds error
+        return 101;
     }
 
     // Sanitize argument array
@@ -19,7 +27,24 @@ int main(int argc, const char *argv[])
         printf("Out of bounds error.\n");
         return 100;
     }
-
+    
+    // Check for arguments
+    if (argc < 2)
+    {
+        printf("No arguments.");
+        return 200;
+    }
+    
+    // Construct flag hash table
+    flagTupleNode *flagTable[UINT_MAX + 1];
+    flagTupleNode *flagTable[UINT_MAX + 1] = {NULL};
+    bool build_result = build_table(flagTable);
+    if (build_result == false)
+    {
+        printf("Memory allocation error.\n");
+        return 300;
+    }
+    
     // Iterate over arguments
     for (i = 1; i < argc; i++)
     {
@@ -29,17 +54,27 @@ int main(int argc, const char *argv[])
             printf("Arguments too long.\n");
             return 102;
         }
-
+        
         // Parse flags
         if (argv[i][0] == '-')
         {
             // Identify flags
-            for (j=1; j < LEN(arg[j]); j++)
+            for (j = 1; j < LEN(arg[j]); j++)
             {
                 // Catch long form flags
-                if (j == 2 && argv[i][j] == '-')
+                if (j == 1 && argv[i][j] == '-')
                 {
-                    // Set long form boolean
+                    // Detect long form flags
+                    switch (argv[i])
+                    {
+                        case "--version":
+                            // Set boolean of preset struct to true
+                            break;
+                        
+                        default:
+                            printf("Invalid flag %s.\n", argv[i]);
+                            return 201;
+                    }
                     break;
                 }
                 else
@@ -47,14 +82,14 @@ int main(int argc, const char *argv[])
                     // Detect short form flags
                     switch (argv[i][j])
                     {
-                        case v:
+                        case 'v':
                             // Set boolean of preset struct to true
                             break;
 
                         // Catch invalid flags
                         default:
-                            printf("Invalid flags.\n");
-                            return 200;
+                            printf("Invalid flag -%c.\n", argv[i][j]);
+                            return 201;
                     }
                 }
             }
