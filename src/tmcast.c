@@ -102,7 +102,7 @@ int main(int argc, const char *argv[])
 
 
 // Builds the hast table for the flags
-bool build_table(flagTable)
+bool build_table()
 {
     char *names[NUM_FLAGS] = {"version"};
     return true;
