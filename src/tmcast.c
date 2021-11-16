@@ -38,7 +38,12 @@ int main(int argc, const char *argv[])
     // Construct flag hash table
     flagTupleNode *flagTable[UINT_MAX + 1];
     flagTupleNode *flagTable[UINT_MAX + 1] = {NULL};
-    build_table(flagTable);
+    bool build_result = build_table(flagTable);
+    if (build_result == false)
+    {
+        printf("Memory allocation error\n");
+        return 300;
+    }
     
     // Iterate over arguments
     for (i = 1; i < argc; i++)
@@ -101,9 +106,17 @@ int main(int argc, const char *argv[])
 }
 
 
-// Builds the hast table for the flags
+// Builds the hash table for the flags
 bool build_table()
 {
     char *names[NUM_FLAGS] = {"version"};
-    return true;
+    bool pointer_result = true;
+    do
+    {
+        if (a == NUM_FLAGS)
+        {
+            return true;
+        }
+    } while (pointer_result == true)
+    return false;
 }
