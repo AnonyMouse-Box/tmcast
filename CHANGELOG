@@ -1,6 +1,15 @@
 ChangeLog - v 0.0.0
 ___________________
 ----------
+2021/11/16
+----------
+- Implemented checking for memory allocation errors
+- Created a function for building flag table
+- Built struct for flag hash table
+- Defined key maximum variables
+- Added installation documentation
+- Documented error codes
+----------
 2021/11/15
 ----------
 - Added descriptive errors and unique error codes
