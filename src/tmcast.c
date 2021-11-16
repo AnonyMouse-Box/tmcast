@@ -1,6 +1,14 @@
 // Include header file
 #include "tmcast.h"
 
+// Define flag tuple hash table node
+typedef struct flagTupleNode
+{
+    char name[50];
+    bool value;
+    struct flagTupleNode *next;
+} flagTupleNode;
+
 // Main function
 int main(int argc, const char *argv[])
 {
@@ -27,6 +35,11 @@ int main(int argc, const char *argv[])
         return 200;
     }
     
+    // Construct flag hash table
+    flagTupleNode *flagTable[UINT_MAX + 1];
+    flagTupleNode *flagTable[UINT_MAX + 1] = {NULL};
+    build_table(flagTable);
+    
     // Iterate over arguments
     for (i = 1; i < argc; i++)
     {
@@ -36,12 +49,12 @@ int main(int argc, const char *argv[])
             printf("Arguments too long.\n");
             return 102;
         }
-
+        
         // Parse flags
         if (argv[i][0] == '-')
         {
             // Identify flags
-            for (j=1; j < LEN(arg[j]); j++)
+            for (j = 1; j < LEN(arg[j]); j++)
             {
                 // Catch long form flags
                 if (j == 1 && argv[i][j] == '-')
@@ -85,4 +98,12 @@ int main(int argc, const char *argv[])
     }
 
     return 0; // Exit success
+}
+
+
+// Builds the hast table for the flags
+bool build_table(flagTable)
+{
+    char *names[NUM_FLAGS] = {"version"};
+    return true;
 }
