@@ -41,7 +41,7 @@ int main(int argc, const char *argv[])
     bool build_result = build_table(flagTable);
     if (build_result == false)
     {
-        printf("Memory allocation error\n");
+        printf("Memory allocation error.\n");
         return 300;
     }
     
@@ -103,20 +103,4 @@ int main(int argc, const char *argv[])
     }
 
     return 0; // Exit success
-}
-
-
-// Builds the hash table for the flags
-bool build_table()
-{
-    char *names[NUM_FLAGS] = {"version"};
-    bool pointer_result = true;
-    do
-    {
-        if (a == NUM_FLAGS)
-        {
-            return true;
-        }
-    } while (pointer_result == true)
-    return false;
 }
