@@ -1,6 +1,14 @@
 ChangeLog - v 0.0.0
 ___________________
 ----------
+2021/11/17
+----------
+- Dropped in stand-in makefile for build process
+- Made initial dockerfile to construct testing containers
+- Rearranged file structure to be more standardized
+- Inserted hash function file
+- Completed the hash table function
+----------
 2021/11/16
 ----------
 - Split flags table interaction into separate file

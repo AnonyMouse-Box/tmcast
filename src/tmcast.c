@@ -38,7 +38,7 @@ int main(int argc, const char *argv[])
     // Construct flag hash table
     flagTupleNode *flagTable[UINT_MAX + 1];
     flagTupleNode *flagTable[UINT_MAX + 1] = {NULL};
-    bool build_result = build_table(flagTable);
+    bool build_result = build_table();
     if (build_result == false)
     {
         printf("Memory allocation error.\n");
