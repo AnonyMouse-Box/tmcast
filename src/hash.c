@@ -2,7 +2,7 @@
 #include "hash.h"
 
 //SuperFastHash algorithm built by Paul Hsieh at http://www.azillionmonkeys.com/qed/hash.html
-uint32_t SuperFastHash(const char *data, int len)
+uint32_t super_fast_hash(const char *data, int len)
 {
     uint32_t hash = len, tmp;
     int rem;
