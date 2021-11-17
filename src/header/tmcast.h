@@ -12,3 +12,4 @@
 #include "flags.h"
 
 // Function prototypes
+int main(int argc, const char *argv[]);
