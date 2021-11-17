@@ -2,6 +2,7 @@
 #include <stdbool.h>
 
 // Local files
+#include "hash.h"
 
 // Definitions
 #define NUM_FLAGS 1                     // Set number of flags
