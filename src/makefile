@@ -20,10 +20,10 @@ all: tmcast
 
 .PHONY: install
 install: all
-        @echo "You must be root to install."
-        chmod +x hello
-        mv tmcast /usr/local/bin/tmcast
+     @echo "You must be root to install."
+     chmod +x hello
+     mv tmcast /usr/local/bin/tmcast
 
 .PHONY: clean
 clean:
-        -rm -f tmcast *.o *~ core
+     -rm -f tmcast *.o *~ core
