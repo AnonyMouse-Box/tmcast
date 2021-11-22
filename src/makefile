@@ -7,7 +7,7 @@ all: tmcast
 
 .PHONY: install
 install: all
-     chmod +x tmcast
+     #chmod +x tmcast
      mv tmcast /usr/local/bin/tmcast
 
 .PHONY clean
