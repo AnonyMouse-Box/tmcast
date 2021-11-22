@@ -21,7 +21,7 @@ INPUT_DEPS = $(patsubst %,$(IDIR)/%,$(_INPUT_DEPS))
 
 HASH_OBJ = hash.o
 _HASH_DEPS = hash.h
-HASH_DEPS = $(patsubst %,$(IDIR)/%,$(_HASH_DEPS))
+HASH_DEPS = $(patsubst %,$(LDIR)/inc/%,$(_HASH_DEPS))
 
 tmcast: ${OBJ}
      ${CC} $^ ${LIBS} ${CFLAGS} ${LDFLAGS} -o $@
