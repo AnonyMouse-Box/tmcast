@@ -20,8 +20,8 @@ _INPUT_DEPS = input.h
 INPUT_DEPS = $(patsubst %,$(IDIR)/%,$(_INPUT_DEPS))
 
 HASH_OBJ = hash.o
-_HASH_DEPS = hash.h
-HASH_DEPS = $(patsubst %,$(LDIR)/inc/%,$(_HASH_DEPS))
+_LIB_DEPS = hash.h
+LIB_DEPS = $(patsubst %,$(LDIR)/inc/%,$(_LIB_DEPS))
 
 tmcast: ${OBJ}
      ${CC} $^ ${LIBS} ${CFLAGS} ${LDFLAGS} -o $@
@@ -32,7 +32,7 @@ tmcast: ${OBJ}
 ${INPUT_OBJ}: %.c ${INPUT_DEPS}
      ${CC} -c $< ${CFLAGS} -o $@
 
-${HASH_OBJ}: %.c ${HASH_DEPS}
+${LIB_OBJ}: %.c ${LIB_DEPS}
      ${CC} -c $< ${CFLAGS} -o $@
 
 .PHONY: all
