@@ -3,25 +3,28 @@ IDIR = ./inc
 SDIR = ./src
 ODIR = ./build
 LDIR = ./lib
+LDIR_INC = ${LDIR}/inc
 
 CC = gcc
 LIBS = 
 CFLAGS = -I${IDIR} -Wall -Wextra -Werror
 LDFLAGS = 
 
-_SRC = main.c flags.c hash.c
-SRC = $(patsubst %,$(SDIR)/%,$(_SRC))
+#_SRC = main.c flags.c hash.c
+#SRC = $(patsubst %,${SDIR}/%,${_SRC})
 
 _OBJ = main.o flags.o hash.o
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+OBJ = $(patsubst %,${ODIR}/%,${_OBJ})
 
-INPUT_OBJ = main.o flags.o
+_INPUT_OBJ = main.o flags.o
+INPUT_OBJ = $(patsubst %,${ODIR}/%,${_INPUT_OBJ})
+
 _INPUT_DEPS = input.h
-INPUT_DEPS = $(patsubst %,$(IDIR)/%,$(_INPUT_DEPS))
+INPUT_DEPS = $(patsubst %,${IDIR}/%,${_INPUT_DEPS})
 
-HASH_OBJ = hash.o
+LIB_OBJ = hash.o
 _LIB_DEPS = hash.h
-LIB_DEPS = $(patsubst %,$(LDIR)/inc/%,$(_LIB_DEPS))
+LIB_DEPS = $(patsubst %,${LDIR_INC}/%,${_LIB_DEPS})
 
 tmcast: ${OBJ}
      ${CC} $^ ${LIBS} ${CFLAGS} ${LDFLAGS} -o $@
@@ -41,9 +44,9 @@ all: tmcast
 .PHONY: install
 install: all
      @echo "You must be root to install."
-     chmod +x hello
+     chmod +x tmcast
      mv tmcast /usr/local/bin/tmcast
 
 .PHONY: clean
 clean:
-     -rm -f tmcast *.o *~ core
+     -rm -f tmcast ${ODIR}/*.o *~ core ${IDIR}/*~ ${LDIR}/*~ ${LDIR_INC}/*~
