@@ -1,5 +1,5 @@
 // Include header file
-#include "flags.h"
+#include "input.h"
 
 // Builds the hash table for the flags
 bool build_table(void)
