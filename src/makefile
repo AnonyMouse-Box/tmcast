@@ -1,10 +1,11 @@
 # Makefile for compilation
-INC = -I "../includes"
+INC = -I "./inc"
+#SRC = ./src
 CC = gcc
 LIBS = 
 CFLAGS = -Wall -Wextra -Werror
 LDFLAGS = 
-OBJ = main.o flags.o hash.o
+OBJ = main.o flags.o hash.o # replace with ${SRC}/%.o when folder structure resolved
 
 tmcast: ${OBJ}
      ${CC} $^ ${LIBS} ${INC} ${CFLAGS} ${LDFLAGS} -o $@
