@@ -10,7 +10,7 @@ LDIR_INC = ${LDIR}/inc
 # Set compiler settings
 CC = gcc
 LIBS = 
-CFLAGS = -I${IDIR} -Wall -Wextra -Werror
+CFLAGS = -I ${IDIR} -Wall -Wextra -Werror
 LDFLAGS = 
 
 # Name binary executable
@@ -26,7 +26,7 @@ LLIB = $(patsubst %,${ODIR_LIB}/%,${_LLIB})
 
 # Build dependencies list
 _DEPS = input.h
-DEPS = $(patsubst %,${IDIR}/%,${_DEPS})
+DEPS=$(patsubst %,${IDIR}/%,${_DEPS})
 
 # Catch for make all
 .PHONY: all
@@ -50,11 +50,11 @@ ${ODIR_LIB}/%.o: ${LDIR}/%.c ${LDIR_INC}/%.h
 .PHONY: install
 install: all
 	@echo "You must be root to install."
-	chmod +x tmcast
-	mv ${ODIR}/binary /usr/local/bin/tmcast
+	chmod +x ${EXE}
+	cp ${EXE} /usr/local/bin/tmcast
 
 # Clean up build files and folders
 .PHONY: clean
 clean:
-	-rm -f ${ODIR}/binary ${ODIR}/*.o ${ODIR_LIB}/.o *~ core ${IDIR}/*~ ${LDIR}/*~ ${LDIR_INC}/*~
+	-rm -f ${EXE} ${ODIR}/*.o ${ODIR_LIB}/.o *~ core ${IDIR}/*~ ${LDIR}/*~ ${LDIR_INC}/*~
 	-rm -rf ${ODIR}
