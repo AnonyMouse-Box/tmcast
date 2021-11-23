@@ -1,10 +1,11 @@
 FROM gcc:latest AS compiler
-RUN ["mkdir -p /usr"]
+#RUN ["mkdir -p /usr"]
 WORKDIR /usr
 COPY src .
-COPY include .
+COPY inc .
+COPY lib .
 COPY makefile .
-ENTRYPOINT ["make"]
+CMD ["make"]
 
 #FROM alpine:latest AS testbed
 #COPY --from=0 /usr/build/binary /usr/local/bin/
