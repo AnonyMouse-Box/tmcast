@@ -1,5 +1,5 @@
 // Include header file
-#include "tmcast.h"
+#include "input.h"
 
 // Define flag tuple hash table node
 typedef struct flagTupleNode
