@@ -1,52 +1,57 @@
 # Makefile for compilation
+# Set directories
 IDIR = ./inc
 SDIR = ./src
 ODIR = ./build
 LDIR = ./lib
+ODIR_LIB = ${ODIR}/lib
 LDIR_INC = ${LDIR}/inc
 
+# Set compiler settings
 CC = gcc
 LIBS = 
 CFLAGS = -I${IDIR} -Wall -Wextra -Werror
 LDFLAGS = 
 
-#_SRC = main.c flags.c hash.c
-#SRC = $(patsubst %,${SDIR}/%,${_SRC})
-
-_OBJ = main.o flags.o hash.o
+# Build object file list
+_OBJ = main.o flags.o
 OBJ = $(patsubst %,${ODIR}/%,${_OBJ})
 
-_INPUT_OBJ = main.o flags.o
-INPUT_OBJ = $(patsubst %,${ODIR}/%,${_INPUT_OBJ})
+# Build local library list
+_LLIB = hash.o
+LLIB = $(patsubst %,${ODIR_LIB}/%,${_LLIB})
 
-_INPUT_DEPS = input.h
-INPUT_DEPS = $(patsubst %,${IDIR}/%,${_INPUT_DEPS})
+# Build dependencies list
+_DEPS = input.h
+DEPS = $(patsubst %,${IDIR}/%,${_DEPS})
 
-LIB_OBJ = hash.o
-_LIB_DEPS = hash.h
-LIB_DEPS = $(patsubst %,${LDIR_INC}/%,${_LIB_DEPS})
-
-tmcast: ${OBJ}
+# Final link for executable
+tmcast: ${OBJ} ${LLIB}
      ${CC} $^ ${LIBS} ${CFLAGS} ${LDFLAGS} -o $@
 
-#${ODIR}/%.o: ${SDIR}/%.c ${DEPS}
-     #${CC} -c $< ${CFLAGS} -o $@
-
-${INPUT_OBJ}: %.c ${INPUT_DEPS}
+# Compile object files
+${ODIR}/%.o: ${SDIR}/%.c ${DEPS}
+     mkdir -p ${ODIR}
      ${CC} -c $< ${CFLAGS} -o $@
 
-${LIB_OBJ}: %.c ${LIB_DEPS}
+# Compile local libraries
+${ODIR_LIB}/%.o: ${LDIR}/%.c ${LDIR_INC}/%.h
+     mkdir -p ${ODIR_INC}
      ${CC} -c $< ${CFLAGS} -o $@
 
+# Catch for make all
 .PHONY: all
 all: tmcast
 
+# Install program on in $PATH user binary folder
 .PHONY: install
 install: all
      @echo "You must be root to install."
      chmod +x tmcast
      mv tmcast /usr/local/bin/tmcast
 
+# Clean up build files and folders
 .PHONY: clean
 clean:
-     -rm -f tmcast ${ODIR}/*.o *~ core ${IDIR}/*~ ${LDIR}/*~ ${LDIR_INC}/*~
+     -rm -f tmcast ${ODIR}/*.o ${ODIR_LIB}/.o *~ core ${IDIR}/*~ ${LDIR}/*~ ${LDIR_INC}/*~
+     -rm -rf ${ODIR}
