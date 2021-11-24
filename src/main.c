@@ -46,10 +46,13 @@ int main(int argc, const char *argv[])
     }
     
     // Iterate over arguments
-    for (i = 1; i < argc; i++)
+    for (int i = 1; i < argc; i++)
     {
-        // Sanitize arguments
-        if (LEN(argv[i]) < 1 || LEN(argv[i]) > MAX)
+        count = 0;
+	while(argv[i][++count] != '\0');
+	    
+	// Sanitize arguments
+        if (count < 1 || count > MAX)
         {
             printf("Arguments too long.\n");
             return 102;
@@ -59,35 +62,35 @@ int main(int argc, const char *argv[])
         if (argv[i][0] == '-')
         {
             // Identify flags
-            for (j = 1; j < LEN(arg[j]); j++)
+            for (int j = 1; j < count; j++)
             {
                 // Catch long form flags
                 if (j == 1 && argv[i][j] == '-')
                 {
                     // Detect long form flags
-                    switch (argv[i])
+                    if (strcmp(argv[i], "--version") == 0)
                     {
-                        case "--version":
                             // Set boolean of preset struct to true
-                            break;
-                        
-                        default:
+		    }
+                    
+		    // Catch invalid flags 
+		    else
+		    {
                             printf("Invalid flag %s.\n", argv[i]);
                             return 201;
                     }
-                    break;
                 }
                 else
                 {
                     // Detect short form flags
-                    switch (argv[i][j])
+                    if (argv[i][j] == 'v')
                     {
-                        case 'v':
                             // Set boolean of preset struct to true
-                            break;
-
-                        // Catch invalid flags
-                        default:
+                    }
+                    
+		    // Catch invalid flags
+		    else
+		    {
                             printf("Invalid flag -%c.\n", argv[i][j]);
                             return 201;
                     }
