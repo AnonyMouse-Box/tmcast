@@ -10,7 +10,7 @@ LDIR_INC = ${LDIR}/inc
 # Set compiler settings
 CC = gcc
 LIBS = 
-CFLAGS = -I ${IDIR} -Wall -Wextra -Werror
+CFLAGS = -I ${IDIR} -I ${LDIR_INC} -Wall -Wextra -Werror
 LDFLAGS = 
 
 # Name binary executable
