@@ -1,14 +1,6 @@
 // Include header file
 #include "input.h"
 
-// Define flag tuple hash table node
-typedef struct flagTupleNode
-{
-    char name[50];
-    bool value;
-    struct flagTupleNode *next;
-} flagTupleNode;
-
 // Main function
 int main(int argc, const char *argv[])
 {
@@ -36,8 +28,6 @@ int main(int argc, const char *argv[])
     }
     
     // Construct flag hash table
-    flagTupleNode *flagTable[UINT_MAX + 1];
-    flagTupleNode *flagTable[UINT_MAX + 1] = {NULL};
     bool build_result = build_table();
     if (build_result == false)
     {
