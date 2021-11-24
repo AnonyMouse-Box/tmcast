@@ -1,11 +1,10 @@
 # Installation
 
 Currently the program is not yet complete or released, so the best course of action for installation is as follows:
-1. Download the files found in the src folder.
-2. Install a C compiler, [GNU C compiler](https://gcc.gnu.org/) and [Clang](https://clang.llvm.org/) are popular choices.
-3. Compile the tmcast.h and tmcast.c to make a binary.
-4. Put the binary in /usr/local/bin or somewhere else on your $PATH variable.
-5. Run the command.
+1. Git clone the repository.
+2. Go into the repository root.
+3. Run `make install`.
+4. Run `tmcast`.
 
 ##### Disclaimer
 

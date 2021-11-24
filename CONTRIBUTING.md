@@ -12,3 +12,6 @@ A note on comments, both in code and out of it. Firstly plain don't be offensive
 5. Be sure to pull in regular updates from the master branch, and keep an eye on the files most relevant to your section for any changes.
 6. Always try to leave a helpful message with each commit, this makes it easier to unpick your code later and make sense of what you did and why.
 7. When you believe your code is ready for use, submit a pull request, then sit back, relax, and prepare for the "What the hell *is* this garbage?!"
+
+In terms of how to access the code and what tools to use I operate a Gitflow process, read about it [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow). So anything that works without breaking that will be good, for now I'll retain management of the branch structure, just let me know what you need and I'll make it for you. The main and develop branches are protected to protect the core structure of the code and limit CI/CD pipelines where I can use them to test the code before releasing. Access to them will be as described through hotfix, release and feature branches. Until release I'm pushing updates through hotfix branches to skip over the currently unnecessary steps as the code is as yet unstable so doesn't need protecting.
+
