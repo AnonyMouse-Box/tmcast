@@ -1,9 +1,9 @@
 FROM gcc:latest AS compiler
-#RUN ["mkdir -p /usr"]
-WORKDIR /usr
-COPY src .
-COPY inc .
-COPY lib .
+RUN ["mkdir", "-p", "/usr/dev"]
+WORKDIR /usr/dev
+COPY src src
+COPY inc inc
+COPY lib lib
 COPY makefile .
 CMD ["make"]
 
