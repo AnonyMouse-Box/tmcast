@@ -1,16 +1,15 @@
 ChangeLog - v 0.0.0
 ___________________
-----------
-2021/11/17
-----------
+
+- Fixed all the non-struct related compiler errors
+- Diagnosed and resolved Docker build issues
+- Updated Dockerfile to build a gcc container
+- Replaced makefile with something more relevant
 - Dropped in stand-in makefile for build process
 - Made initial dockerfile to construct testing containers
 - Rearranged file structure to be more standardized
 - Inserted hash function file
 - Completed the hash table function
-----------
-2021/11/16
-----------
 - Split flags table interaction into separate file
 - Implemented checking for memory allocation errors
 - Created a function for building flag table
@@ -18,9 +17,6 @@ ___________________
 - Defined key maximum variables
 - Added installation documentation
 - Documented error codes
-----------
-2021/11/15
-----------
 - Added descriptive errors and unique error codes
 - Set up case staments for entering flags
 - Split into long and short form flags
