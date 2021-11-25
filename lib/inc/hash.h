@@ -1,5 +1,6 @@
 // Included libraries
 #include <stdint.h>
+#include <stddef.h>
 
 // Local files
 

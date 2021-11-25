@@ -1,6 +1,7 @@
 // Included libraries
 #include <stdio.h>
 #include <stdint.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
 #include <limits.h>
@@ -20,9 +21,8 @@ typedef struct flagTupleNode
     struct flagTupleNode *next;
 } flagTupleNode;
 
-flagTupleNode *flagTable[UINT_MAX + 1];
-
 // Function prototypes
 int main(int argc, const char *argv[]);
 bool build_table(void);
-bool write_node(flagTupleNode *ptrNode);
+bool load_value(flagTupleNode* node, const char* insert);
+bool write_node(flagTupleNode* node, const char* insert);
