@@ -43,7 +43,7 @@ ${ODIR}/%.o: ${SDIR}/%.c ${DEPS}
 
 # Compile local libraries
 ${ODIR_LIB}/%.o: ${LDIR}/%.c ${LDIR_INC}/%.h
-	mkdir -p ${ODIR_INC}
+	mkdir -p ${ODIR_LIB}
 	${CC} -c $< ${CFLAGS} -o $@
 
 # Install program on in $PATH user binary folder
