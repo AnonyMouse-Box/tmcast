@@ -1,0 +1,5 @@
+theme: jekyll-theme-slate
+title: TmCast
+description: A multi-casting script for Tmux
+permalink: pretty
+show_downloads: true
