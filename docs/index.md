@@ -1,4 +1,4 @@
-[Home](https://github.enim.ga/)
+[Home](https://github.cmdshell.uk/)
 
 A simple tmux multicast program for sending commands to multiple panes at once. Tmux is a terminal multiplexer and is a powerful means to reach beyond what the standard terminal emulator can achieve by allowing a hierarchy of sessions, windows, and panes, including the means to dynamically split windows using simple hotkey combinations. There is already means to send messages and commands to other panes, by use of the `tmux send-keys` command. Utilizing shell loops it is more than possible to use the same mechanism to broadcast to all panes, and with the inclusion of conditionals it can be mutated into multicast.
 
